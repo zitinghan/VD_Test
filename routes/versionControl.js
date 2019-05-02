@@ -1,10 +1,17 @@
-import { Router } from 'express';
+//import { Router } from 'express';
+const router = require('express-promise-router')();
+import versionControlController from '../controllers/versionControl';
 
-const router = Router();
+//const router = Router();
 
-router.get('/', (req, res) => {
-  //return res.send(Object.values(req.context.models.users));
-  return res.status(200).send("hello world");
-});
+// GET - Retieve data with Key
+// Input: params /[key]
+// Output: key, value, createAt and updateAt
+router.route('/:key').get(versionControlController.getKey);
+
+// POST - Save new Key and value with current timestamp
+// Input: {key: value}
+// Output: key, value, createAt and updateAt
+router.route('/').post(versionControlController.save);
 
 export default router;

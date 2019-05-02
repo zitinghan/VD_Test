@@ -1,8 +1,8 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const VersionControlSchema = new mongoose.Schema({
   key: String,
   value: Object
 }, { timestamps: true });
 
-mongoose.model('VersionControl', VersionControlSchema);
+module.exports =  mongoose.model('VersionControl', VersionControlSchema);
