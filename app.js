@@ -1,14 +1,14 @@
 import cors from 'cors';
 import express from 'express';
-import 'dotenv/config'; //setting global env
 import logger from 'morgan';
 import bodyParser from 'body-parser';
+import config from "./config";
 import versionControlRoutes from './routes/versionControl';
 
 const app = express();
 
 const mongoose = require('mongoose');
-mongoose.connect(`mongodb://${process.env.HOST}/${process.env.DB_NAME}`, { useNewUrlParser: true });
+mongoose.connect(`mongodb://${config.db.host}/${config.db.name}`, { useNewUrlParser: true });
 
 
 app.use(cors());
@@ -39,4 +39,5 @@ app.use((err, req, res, next) => {
   console.error(err);
 });
 
-app.listen(process.env.PORT, () => console.log(`Listening on port ${process.env.PORT}!`))
+app.listen(config.app.port, () => console.log(`Listening on port ${config.app.port}!`))
+module.exports = app;

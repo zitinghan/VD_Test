@@ -1,5 +1,6 @@
 import models from "../models/versionControl";
 import { apiReturnMessage } from "../functions/apiMessage";
+import "regenerator-runtime/runtime";
 
 module.exports = {
   getKey: async (req, res) => {
