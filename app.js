@@ -2,13 +2,13 @@ import cors from 'cors';
 import express from 'express';
 import logger from 'morgan';
 import bodyParser from 'body-parser';
+import mongoose from "mongoose";
 import config from "./config";
 import versionControlRoutes from './routes/versionControl';
 
 const app = express();
 
-const mongoose = require('mongoose');
-mongoose.connect(`mongodb://${config.db.host}/${config.db.name}`, { useNewUrlParser: true });
+mongoose.connect('mongodb+srv://ziting:ziting!88@cluster0-4ut6h.mongodb.net/vdtest', { useNewUrlParser: true });
 
 
 app.use(cors());

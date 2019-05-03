@@ -6,7 +6,6 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
-    "dotenv": "^7.0.0",
     "express": "^4.16.4",
     "express-promise-router": "^3.0.3",
     "mongoose": "^5.5.5",
@@ -26,7 +25,7 @@
     "nodemon": "^1.19.0"
   },
   "scripts": {
-    "start": "pm2 start --interpreter babel-node app.js",
+    "server": "pm2 start ./build/app.js",
     "dev": "nodemon --exec babel-node app.js",
     "test": "mocha --require @babel/register ./tests --recursive ",
     "build": "babel -d ./build --ignore node_modules/**/*.js . -s"

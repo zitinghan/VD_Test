@@ -3,9 +3,9 @@ const config = {
     port: 3000
   },
   db: {
-    host: 'localhost',
+    host: 'cluster0-4ut6h.mongodb.net',
     port: 27017,
-    name: 'vd_test'
+    name: 'vdtest'
   }
 };
 
