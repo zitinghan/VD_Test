@@ -1,4 +1,4 @@
-# VD_Test# VD_Test
+# VD_Test
 
 This a HTTP API test from VD. 
 
