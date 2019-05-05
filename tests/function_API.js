@@ -9,14 +9,29 @@ import { testData } from "./testData";
 // Configure chai
 chai.use(chaiHttp);
 chai.should();
-const expect = chai.expect;
 
 describe('API Test', () => {
   
   it(`Post first data through API - ${new Date().getTime()}`, async () => {
     const res = await chai.request(app).post('/api/vc').send(testData.postData[0]);
-    expect(res).to.have.status(200);
-  }); 
+    res.should.have.status(200);
+  });
+  
+  it(`Test first data error format`, async () => {
+    const res = await chai.request(app).post('/api/vc').send(JSON.stringify(testData.postData[0]));
+    res.should.have.status(401);
+    res.body.should.be.a('object');
+  });
+
+  it(`Test get with empty key - 404 error`, async () => {
+    const res = await chai.request(app).get('/api/vc/');
+    res.should.have.status(404);
+  });
+
+  it(`Test get with wrong key - no data return`, async () => {
+    const res = await chai.request(app).get('/api/vc/wringValueTest');
+    res.body.data.length.should.equal(0);
+  });
 
   it(`Get first data, compare 1st value ${JSON.stringify(testData.postData[0])}`, async () => {
     const postDataKey = Object.keys(testData.postData[0])[0];
@@ -29,7 +44,7 @@ describe('API Test', () => {
 
   it(`Post second data through API - ${new Date().getTime()}`, async () => {
     const res = await chai.request(app).post('/api/vc').send(testData.postData[1]);
-    expect(res).to.have.status(200);
+    res.should.have.status(200);
   });
 
   it(`Get second data, compare 2nd value - ${JSON.stringify(testData.postData[1])}`, async () => {
@@ -58,7 +73,7 @@ describe('API Test', () => {
     const res = await models.deleteMany({ key: Object.keys(testData.postData[0])[0]});
     res.ok.should.equal(1);
   });
-
+ 
 });
 
 function changeDateToMili(date){

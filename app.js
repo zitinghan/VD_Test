@@ -36,7 +36,6 @@ app.use((err, req, res, next) => {
       message: error.message
     }
   });
-  console.error(err);
 });
 
 app.listen(config.app.port, () => console.log(`Listening on port ${config.app.port}!`))

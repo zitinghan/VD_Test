@@ -5,7 +5,7 @@ const config = {
   db: {
     host: 'cluster0-4ut6h.mongodb.net',
     port: 27017,
-    name: 'vdtest'
+    name: 'vdtest_test'
   }
 };
 
